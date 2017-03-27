@@ -1,0 +1,50 @@
+<div>    
+    <div class="box box-solid" ng-controller="settings.awardsController" ng-class="{content_loading: loading}">
+        <div class="box-header with-border">
+            <h3 class="box-title">Configuration</h3>
+        </div>
+        <div class="box-body">
+            <form ng-submit="saveConfiguration();">
+                <h4>Awards Points</h4>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>App invitation Converted</label>
+                        <input type="number" class="form-control" 
+                               required
+                               ng-model="config.awards.APP_INVITATION_CONVERTED" />
+                    </div>                    
+                    <div class="form-group col-md-6">
+                        <label>Referral Request approved</label>
+                        <input type="number" class="form-control" 
+                               required
+                               ng-model="config.awards.REFERRAL_REQUEST_APPROVED" />
+                    </div>
+                </div>                
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>To Refer More</label>
+                        <input type="number" class="form-control" 
+                               required
+                               ng-model="config.awards.TO_REFER_MORE" />
+                    </div>
+                </div>
+                <h4>Others</h4>
+                <div class="row">
+                    <div class="form-group col-md-6">
+                        <label>Free Referrals (per job)</label>
+                        <input type="number" class="form-control" 
+                               required
+                               ng-model="config.freeReferrals" />
+                    </div>
+                    <div class="form-group col-md-6">
+                        <label>Points to Mx Conversion</label>
+                        <input type="number" class="form-control" 
+                               required
+                               ng-model="config.pointsToMx" />
+                    </div>
+                </div>
+                <button class="btn btn-flat btn-primary pull-right">Save Configuration</button>
+            </form>
+        </div>        
+    </div>
+</div>

@@ -1,0 +1,68 @@
+<div>
+    <style type="text/css">
+        .image.image-sm{
+            max-width: 40px;
+            max-height: 40px;
+        }
+    </style>
+    <div ng-class="{content_loading: loading}">        
+        <div ng-show="['list'].indexOf(currentView) >= 0">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua-gradient"><i class="fa fa-money"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Balance</span>
+                            <span class="info-box-number">{{pointsSummary.totalAvailable}}</span>
+                        </div>
+                    </div>                    
+                </div>
+                <div class="col-sm-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green-gradient"><i class="fa fa-credit-card"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Spent</span>
+                            <span class="info-box-number">{{pointsSummary.totalSpent}}</span>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+
+            <div class="box box-solid">
+                <div class="box-header with-border">
+                    <div>
+                        <h3 class="box-title">{{listTitle}} <span>({{pagination.total}})</span></h3>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div ng-if="!list.length">
+                        <h3 class="text-center">No Candidates to be shown</h3>
+                    </div>
+                    <table ng-if="list.length" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>S.No</th>
+                                <th>User</th>
+                                <th>Average Mx</th>
+                                <th>Points</th>
+                                <th>Network Rank</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="candidate in filterList()">
+                                <td>{{(pagination.page - 1) * pagination.limit + $index + 1}}</td>
+                                <td><a href="#candidates/{{candidate.userObjectId}}">{{candidate.userFullName}}</a></td>
+                                <td>{{candidate.avgMx}}</td>
+                                <td>{{candidate.points}}</td>
+                                <td>{{candidate.networkRank}}</td>                                
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer text-center">
+                    <cnv-pagination page="pagination.page" pages="pagination.pages" onchange="pagination.change()"></cnv-pagination>
+                </div>
+            </div>            
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,53 @@
+<div>    
+    <div ng-class="{content_loading: loading}">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="form-group">
+                    <label>Option</label>
+                    <select class="form-control" ng-model="filters.option1">
+                        <option value="">ALL</option>
+                        <option value="FOUND">FOUND</option>
+                        <option value="NOT_FOUND">NOT_FOUND</option>
+                    </select>
+                </div>                
+            </div>            
+        </div>
+        <div class="row">
+            <div class="box box-solid">            
+                <div class="box-header with-border form-inline">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 class="box-title">{{listTitle}} <span>({{pagination.total}})</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div ng-if="!list.length">
+                        <h3 class="text-center">No jobs to show</h3>
+                    </div>
+                    <table ng-if="list.length" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>User</th>
+                                <th>Posted On</th>
+                                <th>Option</th>
+                                <th>Comments</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="feedback in filterList()">
+                                <td><mp-user info="feedback.user"></mp_user></td>
+                            <td>{{feedback.createdAt| date}}</td>
+                            <td>{{feedback.options.option1}}</td>
+                            <td>{{feedback.options.comment}}</td>
+                            </tr>
+                            </tbody>
+                    </table>                
+                </div>
+                <div class="box-footer text-center">
+                    <cnv-pagination page="pagination.page" pages="pagination.pages" onchange="pagination.change()"></cnv-pagination>
+                </div>
+            </div>
+        </div>        
+    </div>    
+</div>

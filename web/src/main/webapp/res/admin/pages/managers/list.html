@@ -1,0 +1,74 @@
+<div>
+    <style type="text/css">
+        .image.image-sm{
+            max-width: 40px;
+            max-height: 40px;
+        }
+    </style>
+    <div>
+        <div ng-class="{content_loading: loading}">
+            <div ng-show="['list'].indexOf(currentView) >= 0">
+                <div class="row">                    
+                    <div class="form-group col-md-4">
+                        <label>Search</label>
+                        <input type="search" 
+                               placeholder="Search..."
+                               class="form-control" 
+                               ng-model="filters.keyword" 
+                               ng-model-options="{debounce: 250}" />
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label>Company</label>
+                        <mp-company-filter model="filters.company">
+                        </mp-company-filter>
+                    </div>
+                </div>
+                <div class="box box-solid">            
+                    <div class="box-header with-border">
+                        <div>
+                            <h3 class="box-title">{{listTitle}} <span ng-show="pagination.total > 1">({{pagination.total}})</span></h3>
+                        </div>
+                    </div>
+                    <div class="box-body">
+                        <div ng-if="!list.length">
+                            <h3 class="text-center">No Managers to be shown</h3>
+                        </div>
+                        <table ng-if="list.length" class="table table-condensed table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Full Name</th>
+                                    <th>Phone</th>
+                                    <th>Email</th>
+                                    <th>Signup Date</th>
+                                    <th>Job Title</th>
+                                    <th>Company</th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="manager in filterList()">
+                                    <td>
+                            <mp-user info="manager"></mp_user>
+                                </td>
+                                <td>{{manager.phone}}</td>
+                                <td>{{manager.email? manager.email: ''}}</td>
+                                <td>{{manager.createdAt| date}}</td>
+                                <td>{{manager.jobTitle? manager.jobTitle : ''}}</td>
+                                <td>{{manager.company}}</td>
+                                <td>
+                                    <button type="button" class="btn btn-sm btn-flat btn-default" ng-click="changeView('managers/' + manager.objectId)">
+                                        <i class="fa fa-eye"></i>
+                                    </button>
+                                </td>
+                                </tr>
+                                </tbody>
+                        </table>                
+                    </div>
+                    <div class="box-footer text-center">                
+                        <cnv-pagination page="pagination.page" pages="pagination.pages" onchange="pagination.change()"></cnv-pagination>
+                    </div>
+                </div>            
+            </div>
+        </div>    
+    </div>   
+</div>

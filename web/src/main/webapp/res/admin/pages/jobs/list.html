@@ -1,0 +1,111 @@
+<div>
+    <style type="text/css">
+        .image.image-sm{
+            max-width: 40px;
+            max-height: 40px;
+        }
+    </style>
+    <div ng-class="{content_loading: loading}">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-6">
+                <div class="form-group pull-right">
+                    <input date-range-picker 
+                           options="{locale: {format: 'D-MMM-YYYY'}}"
+                           readonly="true"
+                           class="form-control date-picker" 
+                           type="text" 
+                           ng-model="filters.date" />
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label for="jobPostType">Select job post type</label>
+                    <div>
+                        <mp-job-type-filter model='filters.jobPostType'>                            
+                        </mp-job-type-filter>                        
+                    </div>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Posted By</label>
+                    <mp-user-filter model="filters.user">
+                    </mp-user-filter>                
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Job Status</label>
+                    <mp-job-status-filter model="filters.status">
+                    </mp-job-status-filter>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Company</label>
+                    <mp-company-filter model="filters.company" source="companySuggestionSource">
+                    </mp-company-filter>
+                </div>
+
+            </div>
+            <div class="row">
+                <!--                <div class="form-group col-md-3">
+                    <label>Skills</label>
+                    <mp-skills-filter model="filters.skills" multiple="true">
+                    </mp-skills-filter>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Cities</label>
+                    <mp-cities-filter model="filters.cities" multiple="true">
+                    </mp-cities-filter>
+                </div>-->
+            </div>
+        </div>
+        <div ng-show="['list'].indexOf(currentView) >= 0">
+            <div class="box box-solid">            
+                <div class="box-header with-border form-inline">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 class="box-title">{{listTitle}} <span>({{pagination.total}})</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div ng-if="!list.length">
+                        <h3 class="text-center">No jobs to show</h3>
+                    </div>
+                    <table ng-if="list.length" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Job Title</th>
+                                <th>Posted By</th>
+                                <th>Company</th>
+                                <th>Req. Skills</th>
+                                <th>Location</th>
+                                <th>Status</th>
+                                <th>Views</th>
+                                <th>Can't Help</th>
+                                <th>Referrals</th>
+                                <th>Chats</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="job in filterList()">
+                                <td>{{job.jobTitle? job.jobTitle : ''}}</td>
+                                <td>{{job.postedBy.fullName? job.postedBy.fullName : ''}}</td>
+                                <td>{{filters.jobPostType==='BY_MANAGER'?job.companyName:job.postedBy.company}}</td>
+                                <td><mp-array-elements data="job.skills"></mp-array-elements></td>                    
+                        <td><mp-array-elements data="job.locations"></mp-array-elements></td>
+                        <td>{{job.active?"Active":"Inactive"}}</td>
+                        <td>{{job.totalViews}}</td>
+                        <td>--</td>
+                        <td>{{job.totalReferrals}}</td>
+                        <td>{{job.totalApplications}}</td>                        
+                        </tr>
+                        </tbody>
+                    </table>                
+                </div>
+                <div class="box-footer text-center">
+                    <cnv-pagination page="pagination.page" pages="pagination.pages" onchange="pagination.change()"></cnv-pagination>
+                </div>
+            </div>            
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,41 @@
+<div>
+    <div ng-class="{content_loading: loading}">
+        <div ng-show="['list'].indexOf(currentView) >= 0">
+            <div class="box box-solid">            
+                <div class="box-header with-border form-inline">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h3 class="box-title">{{listTitle}} <span>({{pagination.total}})</span></h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div ng-if="!list.length">
+                        <h3 class="text-center">No jobs to show</h3>
+                    </div>
+                    <table ng-if="list.length" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th style="width: 10%">S.No</th>
+                                <th style="width: 50%">Name</th>
+                                <th style="width: 20%">Created On</th>
+                                <th style="width: 10%">Total</th>                          
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr ng-repeat="entry in filterList()">
+                                <td>1</td>
+                                <td>{{entry.name}}</td>
+                                <td>{{entry.createdAt| date}}</td>
+                                <td>{{entry.requests + entry.posts}}</td>
+                            </tr>
+                        </tbody>
+                    </table>                
+                </div>
+                <div class="box-footer text-center">
+                    <cnv-pagination page="pagination.page" pages="pagination.pages" onchange="pagination.change()"></cnv-pagination>
+                </div>
+            </div>            
+        </div>
+    </div>    
+</div>

@@ -1,0 +1,90 @@
+<div ng-class="{
+            content_loading: loading
+        }">
+    <div ng-show="['create', 'edit'].indexOf(currentView) >= 0">
+        <div class="box box-solid">
+            <form ng-submit="saveProduct(product);">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label>Title</label>
+                        <input type="text" class="form-control" ng-model="product.title" required="" />
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea class="form-control" ng-model="product.description" rows="5"></textarea>
+                    </div>                    
+                    <div class="form-group">
+                        <label>Google ProductId</label>
+                        <input type="text" class="form-control" ng-model="product.googleProductId" />
+                    </div>
+                    <div class="form-group">
+                        <label>Currency</label>
+                        <select class="form-control" ng-model="product.currency"
+                                ng-options="item for item in currency"></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Price</label>
+                        <input type="text" class="form-control" ng-model="product.price" />
+                    </div>
+                    <div class="form-group">
+                        <label>Job Credits</label>
+                        <input type="text" class="form-control" ng-model="product.credits" />
+                    </div>
+                </div>
+                <div class="box-footer text-right">                        
+                    <button type="button" class="btn btn-default" ng-click="setView('list')">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Save</button>
+                </div>
+            </form>                
+        </div>                        
+    </div>
+
+    <div ng-show="['list'].indexOf(currentView) >= 0">
+        <div class="box box-solid">            
+            <div class="box-header with-border form-inline">
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3 class="box-title">{{listTitle}} <span>({{pagination.total}})</span></h3>
+                    </div>                                    
+                    <div class="col-md-8">                        
+                        <button class="btn btn-flat btn-default pull-right" ng-click="setView('create')"><i class="fa fa-plus"></i> Create Product</button>
+                    </div>
+                </div>
+            </div>
+            <div class="box-body">
+                <div ng-if="!list.length">
+                    <h3 class="text-center">No Products to be shown</h3>
+                </div>
+                <table ng-if="list.length" class="table table-condensed table-hover">
+                    <thead>
+                        <tr>
+                            <th>Product Id</th>
+                            <th>Title</th>                            
+                            <th>Google Product ID</th>
+                            <th>Created on</th>
+                            <th>Price</th>
+                            <th>Job Credits</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="product in filterList()">
+                            <td>{{product.objectId}}</td>
+                            <td>{{product.title}}</td>
+                            <td>{{product.googleProductId}}</td>
+                            <td>{{product.createdAt| date}}</td>
+                            <td>{{product.price + ' ' + product.currency}}</td>
+                            <td>{{product.credits}}</td>                            
+                            <td>
+                                <button type="button" class="btn btn-flat btn-sm btn-default" ng-click="edit(product)">Edit</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>                
+            </div>
+            <div class="box-footer text-center">
+                <cnv-pagination page="pagination.page" pages="pagination.pages" onchange="pagination.change()"></cnv-pagination>
+            </div>
+        </div>            
+    </div>
+</div>
