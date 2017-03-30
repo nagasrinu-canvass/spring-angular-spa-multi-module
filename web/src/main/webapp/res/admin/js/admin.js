@@ -62,7 +62,7 @@
     });
 
     /**
-     * Offers Service
+     * Dashboard Service
      */
     module.service('DashboardService', function ($http, $q) {
         this.getCounts = function () {

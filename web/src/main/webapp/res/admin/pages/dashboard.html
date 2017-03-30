@@ -1,113 +1,53 @@
 <div>
     <h2 class="text-center">Welcome to Admin Dashboard</h2>
     <div class="row">
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="small-box bg-aqua">
                 <div class="inner">
-                    <h3>{{dashboard.candidates|| '-'}}</h3>
-                    <p>Candidates</p>
+                    <h3>{{dashboard.counts1|| '-'}}</h3>
+                    <p>Counts 1</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#/candidates" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="small-box bg-green">
                 <div class="inner">
-                    <h3>{{dashboard.managers|| '-'}}</h3>
-                    <p>Managers</p>
+                    <h3>{{dashboard.counts2|| '-'}}</h3>
+                    <p>Counts 2</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#/managers" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>        
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="small-box bg-yellow">
                 <div class="inner">
-                    <h3>{{dashboard.candidateJobs|| '-'}}</h3>
-                    <p>Candidate Jobs</p>
+                    <h3>{{dashboard.counts3|| '-'}}</h3>
+                    <p>Counts 3</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-stats-bars"></i>
                 </div>
-                <a href="#/jobs" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
         </div>
-        <div class="col-md-2">
+        <div class="col-md-3">
             <div class="small-box bg-red">
                 <div class="inner">
-                    <h3>{{dashboard.managerJobs|| '-'}}</h3>
-                    <p>Manager Jobs</p>
+                    <h3>{{dashboard.counts4|| '-'}}</h3>
+                    <p>Counts 4</p>
                 </div>
                 <div class="icon">
                     <i class="ion ion-person-add"></i>
                 </div>
-                <a href="#/jobs" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+                <a href="" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
             </div>
-        </div>
-        <div class="col-md-2">
-            <div class="small-box bg-aqua">
-                <div class="inner">
-                    <h3>{{dashboard.skills|| '-'}}</h3>
-                    <p>Skills</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#/jobs/skills" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div class="small-box bg-green">
-                <div class="inner">
-                    <h3>{{dashboard.locations|| '-'}}</h3>
-                    <p>Locations</p>
-                </div>
-                <div class="icon">
-                    <i class="ion ion-stats-bars"></i>
-                </div>
-                <a href="#/jobs/locations" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-6">
-            <div class="box box-info">
-                <div class="box-header with-border">
-                    <i class="fa fa-list-alt"></i>
-                    <h3 class="box-title">Application Status</h3>
-                    <div class="box-tools pull-right">
-                        <span class="label label-success">Total Chats: {{statusCounts.total}}</span>
-                    </div>
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a>Applied<span class="pull-right">{{statusCounts['APPLIED']}}</span></a></li>                        
-                        <li><a>Interviewing<span class="pull-right">{{statusCounts['INTERVIEWING']}}</span></a></li>                        
-                        <li><a>Offer Made<span class="pull-right">{{statusCounts['OFFER_MADE']}}</span></a></li>                        
-                        <li><a>Hired<span class="pull-right">{{statusCounts['HIRED']}}</span></a></li>                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6">
-            <div class="box box-danger">
-                <div class="box-header with-border">
-                    <i class="fa fa-users"></i>
-                    <h3 class="box-title">New Signups Today</h3>                    
-                </div>
-                <div class="box-body">
-                    <ul class="nav nav-pills nav-stacked">
-                        <li><a href="#/candidates">Candidates<span class="pull-right">{{dashboard.signups.candidates}}</span></a></li>                        
-                        <li><a href="#/managers">Managers<span class="pull-right">{{dashboard.signups.managers}}</span></a></li>                        
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
+        </div>        
+    </div>    
 </div>

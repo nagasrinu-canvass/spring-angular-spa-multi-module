@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 (function () {
-    var app = angular.module('appAdmin', ['ngRoute', 'cnv.multplyr']);
-
+    var app = angular.module('appAdmin', ['ngRoute', 'app.adminModule']);
     var TMPL_BASE_PATH = "/res/admin/pages";
     app.config(function ($routeProvider) {
         $routeProvider

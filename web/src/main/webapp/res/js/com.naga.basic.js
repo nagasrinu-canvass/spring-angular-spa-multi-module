@@ -33,36 +33,7 @@
         controller: function () {
         }
     });
-
-    module.component("toDo", {
-        bindings: {
-            config: '<',
-            list: '<'
-        },
-        template: '<ul class="todo-list">'
-                + '<li ng-repeat="item in $ctrl.list"><to-do-item item="item"></to-do-item></li>'
-                + '</ul>',
-        controller: function () {
-        }
-    });
-
-    module.component('toDoItem', {
-        require: {parent: '^toDo'},
-        bindings: {
-            item: '<'
-        },
-        template: ''
-                + '<input type="checkbox" value="">'
-                + '<span class="text">{{$ctrl.item.task}}</span>'
-                + '<small class="label label-danger"><i class="fa fa-clock-o"></i> 2 mins</small>'
-                + '<div class="tools">'
-                + '<i class="fa fa-edit"></i>'
-                + '<i class="fa fa-trash-o"></i>'
-                + '</div>'
-                + ''
-    });
-
-
+    
     module.component("bsSearchInput", {
         bindings: {
             onupdate: '&',

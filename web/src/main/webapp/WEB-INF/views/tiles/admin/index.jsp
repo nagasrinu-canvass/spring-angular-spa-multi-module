@@ -1,11 +1,10 @@
 <%-- 
-    Document   : login-layout
-    Created on : 28 Aug, 2016, 3:09:35 PM
+    Document   : Index Page    
     Author     : NavNag
 --%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html ng-app="multplyrAdmin">
+<html ng-app="appAdmin">
     <head>
         <title>&lt;App Name&gt; Admin</title>
         <link rel="icon" type="image/png" href="/res/favicon.ico">
@@ -42,7 +41,7 @@
                     <!-- Sidebar user panel -->
                     <div class="user-panel">        
                         <div class="pull-left image">
-                            <img src="/res/images/icon.png" class="img-circle" alt="User Image">
+                            <img src="/res/images/logo.png" class="img-circle" alt="User Image">
                         </div>
                         <div class="pull-left info">
                             <p>Admin</p>
