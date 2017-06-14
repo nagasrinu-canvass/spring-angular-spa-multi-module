@@ -7,13 +7,13 @@ package org.cnv.appname;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
-import org.springframework.web.servlet.view.tiles3.TilesView;
-import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 /**
  *
@@ -24,18 +24,17 @@ import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Bean
-    public TilesConfigurer tilesConfigurer() {
-        final TilesConfigurer configurer = new TilesConfigurer();
-        configurer.setDefinitions(new String[]{"WEB-INF/views/tiles/tiles-def.xml"});
-        configurer.setCheckRefresh(true);
-        return configurer;
+    public ViewResolver getViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/WEB-INF/views/");
+        resolver.setSuffix(".html");
+        return resolver;
     }
 
-    @Bean
-    public TilesViewResolver tilesViewResolver() {
-        final TilesViewResolver resolver = new TilesViewResolver();
-        resolver.setViewClass(TilesView.class);
-        return resolver;
+    @Override
+    public void configureDefaultServletHandling(
+            DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
     }
 
     /**
@@ -50,7 +49,9 @@ public class MvcConfig extends WebMvcConfigurerAdapter {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("/api/**").allowedOrigins("*").allowedMethods("*");
+        registry.addMapping("/api/**").
+                allowedOrigins("*").
+                allowedMethods("*");
     }
 
 }

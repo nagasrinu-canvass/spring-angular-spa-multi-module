@@ -18,21 +18,6 @@ public class UIController {
 
     @RequestMapping(path = {"", "login", "login/user"}, method = RequestMethod.GET)
     public String loginUser() {
-        return "login.user";
-    }
-
-    @RequestMapping(path = {"login/user"}, method = RequestMethod.POST)
-    public String userHome() {
-        return "user.index";
-    }
-
-    @RequestMapping(path = {"login/admin"}, method = RequestMethod.GET)
-    public String loginAdmin() {
-        return "login.admin";
-    }
-
-    @RequestMapping(path = {"login/admin"}, method = RequestMethod.POST)
-    public String adminHome() {
-        return "admin.index";
+        return "login";
     }
 }
