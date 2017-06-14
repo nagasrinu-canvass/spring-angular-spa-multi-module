@@ -20,4 +20,9 @@ public class UIController {
     public String loginUser() {
         return "login";
     }
+
+    @RequestMapping(path = {"/admin/index"}, method = RequestMethod.GET)
+    public String adminIndex() {
+        return "admin/index";
+    }
 }
