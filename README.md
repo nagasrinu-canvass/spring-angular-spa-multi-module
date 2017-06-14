@@ -26,7 +26,7 @@ The standard template contains 4 modules
 
 ## How to add a new menu
 - open Web module
-- open the file "index.jsp" under "WEB-INF/views/tiles/admin" folder
+- open the file "index.html" under "WEB-INF/views/admin" folder
 - add the following code to the existing ul which hacing class "sidebar-menu"
 ```html
     <li>
