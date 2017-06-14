@@ -1,4 +1,4 @@
-# Spring-angular-Template
+# Spring-Angular-Template
 A spring boot application with angular as a client side framework (Single Page Application)
 
 The standard template contains 4 modules
